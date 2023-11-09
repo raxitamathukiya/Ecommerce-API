@@ -9,7 +9,15 @@ const {categoriesRoutes}=require("./Routes/categories.routes");
 const cors = require('cors');
 
 const app = express();
+
 app.use(cors());
+app.get('/',async(req,res)=>{
+    try {
+       res.send('Welcome to Ecommerce API') 
+    } catch (error) {
+        console.log(error)
+    }
+})
 app.use(express.json());
 app.use('/user',userRoutes)
 app.use('/categories',categoriesRoutes)
