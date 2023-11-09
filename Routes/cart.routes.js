@@ -7,6 +7,80 @@ const {connection} =require('../config/db')
 const {authMiddleware}=require('../Middleware/Auth.middleware')
 const CartRoutes=express.Router()
 
+
+/**
+* @swagger
+* components:
+*   schemas:
+*       cart:
+*       type: object
+*       properties:
+*           id:
+*               type: string
+*               description: The auto-generated id of the cart
+*           product:
+*               type: string
+*               description: The product id
+*           quantity:
+*               type: number
+*               description: The quantity number
+*/
+/**
+ * @swagger
+ * tags:
+ *  name: cart
+ *  description: All the API routes realeted the cart
+ */
+
+/**
+ * @swagger
+ * /cart/add:
+ *  post:
+ *      summary: This will Add new cart from DataBase
+ *      tags: [cart]
+ *      responses:
+ *          200:
+ *              description: Add New cart 
+ *          400:
+ *              description: Inccorect Request!!!!
+ */
+/**
+ * @swagger
+ * /cart/view:
+ *  get:
+ *      summary: This will show cart Data
+ *      tags: [cart]
+ *      responses:
+ *          200:
+ *              description: All Cart 
+ *          400:
+ *              description: Inccorect Request!!!!
+ */
+/**
+ * @swagger
+ * /cart/update/:cartItemId:
+ *  put:
+ *      summary: This will update cart data
+ *      tags: [cart]
+ *      responses:
+ *          200:
+ *              description:  Update 
+ *          400:
+ *              description: Inccorect Request!!!!
+ */
+/**
+ * @swagger
+ * /cart/remove/:cartItemId:
+ *  delete:
+ *      summary: This will Delete cart data
+ *      tags: [cart]
+ *      responses:
+ *          200:
+ *              description:  Delete 
+ *          400:
+ *              description: Inccorect Request!!!!
+ */
+
 CartRoutes.post('/add', authMiddleware, async (req, res) => {
     try {
       const userId = req.body.user._id;

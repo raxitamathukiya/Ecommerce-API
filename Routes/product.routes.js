@@ -2,7 +2,77 @@ const mongoose=require('mongoose')
 const express=require('express')
 const {ProductModel}=require('../Model/Product.model')
 const {connection} =require('../config/db')
+
 const ProductRoutes=express.Router()
+/**
+* @swagger
+* components:
+*   schemas:
+*       Product:
+*       type: object
+*       properties:
+*           id:
+*               type: string
+*               description: The auto-generated id of the user
+*           title:
+*               type: string
+*               description: The product title
+*           price:
+*               type: number
+*               description: The product price
+*           description:
+*               type: string
+*               description: The product description
+*           availability:
+*               type: number
+*               description: The product availability value
+*           categoryId:
+*               type: string
+*               description: The product categoryId
+*/
+/**
+ * @swagger
+ * tags:
+ *  name: Product
+ *  description: All the API routes realeted the Product
+ */
+
+/**
+ * @swagger
+ * /product/add:
+ *  post:
+ *      summary: This will Add new product from DataBase
+ *      tags: [Product]
+ *      responses:
+ *          200:
+ *              description: Add New Product 
+ *          400:
+ *              description: Inccorect Request!!!!
+ */
+/**
+ * @swagger
+ * /product/view/:categoryId:
+ *  get:
+ *      summary: This will show product based on categoryID
+ *      tags: [Product]
+ *      responses:
+ *          200:
+ *              description: All Product 
+ *          400:
+ *              description: Inccorect Request!!!!
+ */
+/**
+ * @swagger
+ * /product/Productview/:productId:
+ *  get:
+ *      summary: This will show product based on productID
+ *      tags: [Product]
+ *      responses:
+ *          200:
+ *              description:  Product 
+ *          400:
+ *              description: Inccorect Request!!!!
+ */
 ProductRoutes.post('/add',async(req,res)=>{
     try {
 const { title,price,description,availability,categoryId } = req.body;

@@ -5,6 +5,60 @@ const userRoutes=express.Router()
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {authMiddleware}=require('../Middleware/Auth.middleware')
+
+/**
+* @swagger
+* components:
+*   schemas:
+*       User:
+*       type: object
+*       properties:
+*           id:
+*               type: string
+*               description: The auto-generated id of the user
+*           name:
+*               type: string
+*               description: The user name
+*           email:
+*               type: string
+*               description: The user email
+*           password:
+*               type: string
+*               description: password the user
+*/
+
+
+/**
+ * @swagger
+ * tags:
+ *  name: User
+ *  description: All the API routes realeted the Users
+ */
+
+/**
+ * @swagger
+ * /user/register:
+ *  post:
+ *      summary: This will Add new user from DataBase
+ *      tags: [User]
+ *      responses:
+ *          200:
+ *              description: Add New user 
+ *          400:
+ *              description: Inccorect Request!!!!
+ */
+/**
+ * @swagger
+ * /user/login:
+ *  post:
+ *      summary: This will check user exits or not
+ *      tags: [User]
+ *      responses:
+ *          200:
+ *              description: login successfully 
+ *          400:
+ *              description: Inccorect Request!!!!
+ */
 userRoutes.post('/register',async(req,res)=>{
     try {
     const { name, email, password } = req.body;

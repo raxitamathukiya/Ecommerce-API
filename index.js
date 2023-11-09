@@ -4,12 +4,26 @@ const {ProductRoutes}=require('./Routes/product.routes')
 const {userRoutes}=require('./Routes/user.routes')
 const {CartRoutes}=require('./Routes/cart.routes')
 const {Orderrouter}=require('./Routes/order.routes')
+const swaggerJsdoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 require("dotenv").config()
 const {categoriesRoutes}=require("./Routes/categories.routes");
 const cors = require('cors');
 
 const app = express();
-
+const options = {
+    definition: {
+      openapi: '3.0.0',
+      info: {
+        title: 'Ecommerce API Documentation',
+        version: '1.0.0',
+      },
+    },
+    apis: ['./Routes/*.js'],
+  };
+  
+  const openapiSpecification = swaggerJsdoc(options);
+  app.use("/EcommerceAPI",swaggerUi.serve,swaggerUi.setup(openapiSpecification))
 app.use(cors());
 app.get('/',async(req,res)=>{
     try {
